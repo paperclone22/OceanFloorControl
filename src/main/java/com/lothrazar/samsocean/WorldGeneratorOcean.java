@@ -15,22 +15,22 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 public class WorldGeneratorOcean implements IWorldGenerator {
   // http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
   private WorldGenerator genClay;
-  private WorldGenerator genSand;
+  private WorldGenerator genGravel;
   private WorldGenerator genDirt;
   private final int MIN_HEIGHT = 20;
   private final int MAX_HEIGHT = 128;
   public static final int CHUNK_SIZE = 16;
   public static final int OVERWORLD = 0;
   public WorldGeneratorOcean() {
-    this.genClay = new WorldGenMinable(Blocks.CLAY.getDefaultState(), ModOcean.cfg.clayNumBlocks, BlockMatcher.forBlock(Blocks.GRAVEL));
-    this.genSand = new WorldGenMinable(Blocks.DIRT.getDefaultState(), ModOcean.cfg.dirtNumBlocks, BlockMatcher.forBlock(Blocks.GRAVEL));
-    this.genDirt = new WorldGenMinable(Blocks.SAND.getDefaultState(), ModOcean.cfg.sandNumBlocks, BlockMatcher.forBlock(Blocks.GRAVEL));
+    this.genClay = new WorldGenMinable(Blocks.CLAY.getDefaultState(), ModOcean.cfg.clayNumBlocks, BlockMatcher.forBlock(Blocks.SAND));
+    this.genGravel = new WorldGenMinable(Blocks.GRAVEL.getDefaultState(), ModOcean.cfg.gravelNumBlocks, BlockMatcher.forBlock(Blocks.SAND));
+    this.genDirt = new WorldGenMinable(Blocks.DIRT.getDefaultState(), ModOcean.cfg.dirtNumBlocks, BlockMatcher.forBlock(Blocks.SAND));
   }
   @Override
   public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
     if (world.provider.getDimension() == OVERWORLD) {
       this.run(this.genClay, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, ModOcean.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
-      this.run(this.genSand, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, ModOcean.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
+      this.run(this.genGravel, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, ModOcean.cfg.gravelChance, MIN_HEIGHT, MAX_HEIGHT);
       this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, ModOcean.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
     }
   }
