@@ -1,5 +1,5 @@
 
-# Ocean Floor - Patches [![](http://cf.way2muchnoise.eu/231837.svg)](https://minecraft.curseforge.com/projects/ocean-floor-clay-sand-and-dirt) [![](http://cf.way2muchnoise.eu/versions/231837.svg)](https://minecraft.curseforge.com/projects/ocean-floor-clay-sand-and-dirt)
+# Ocean Floor - Patches
 
 Minecraft mod written in Java using Forge API
 
